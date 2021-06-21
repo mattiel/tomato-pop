@@ -747,6 +747,10 @@ video {
   flex-direction: column;
 }
 
+.place-items-center {
+  place-items: center;
+}
+
 .items-center {
   align-items: center;
 }
@@ -1400,6 +1404,39 @@ input[type="checkbox"]:checked + div {
 
 input[type="checkbox"]:checked + div svg {
   opacity: 1
+}
+
+.radio-tabs .tab > input[type="radio"]:checked ~ label {
+  --tw-bg-opacity: 1;
+  background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.radio-tabs .tab + .radio-tabs .tab {
+  --tw-border-opacity: 1;
+  border-color: rgba(243, 244, 246, var(--tw-border-opacity));
+  border-left-width: 1px;
+}
+
+.radio-tabs .tab label {
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.tab {
+  display: inline-block;
+}
+
+a {
+  cursor: pointer
+}
+
+select {
+  background-image: url("data:image/svg+xml, %3Csvg fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-position: center right 0.5rem;
+  background-size: .75rem .75rem;
+  background-repeat: no-repeat
 }
 
 /* noto-sans-kr-regular - latin */

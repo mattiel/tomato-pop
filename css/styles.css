@@ -10,6 +10,33 @@ input[type="checkbox"]:checked + div svg {
   @apply opacity-100
 }
 
+.radio-tabs .tab > input[type="radio"]:checked ~ label {
+  @apply bg-blue-600 text-white;
+}
+
+.radio-tabs .tab + .radio-tabs .tab {
+  @apply border-l border-gray-100;
+}
+
+.radio-tabs .tab label {
+  @apply cursor-pointer rounded-md;
+}
+
+.tab {
+  @apply inline-block;
+}
+
+a {
+  @apply cursor-pointer
+}
+
+select {
+  background-image: url("data:image/svg+xml, %3Csvg fill='none' stroke='currentColor' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-position: center right 0.5rem;
+  background-size: .75rem .75rem;
+  @apply bg-no-repeat
+}
+
 /* noto-sans-kr-regular - latin */
 @font-face {
   font-family: 'Noto Sans KR';

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang=ko class="h-screen">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title></title> -->
+    <link rel="stylesheet" href="../build/styles.css">
+    
+</head>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const listCta = document.querySelector('.js-list-cta')
+    const list = document.querySelector('.js-list')
+    listCta.addEventListener('click', () => {
+      list.classList.toggle('translate-y-72')
+      console.log(list.clasList);
+    })
+  });
+</script>
+<body class="h-full">
+  <div class="flex flex-col h-full">
+    <!-- 상단 네비게이션 바 -->
+    <nav class="w-full flex items-center justify-between px-2 h-16 border-b border-gray-200 bg-white flex-shrink-0 z-20">
+      <div class="flex items-center space-x-2">
+        <img src="../assets/logo.svg" class="mr-4">
+        <button 
+          type="button" 
+          class="inline-flex items-center border border-blue-700 text-blue-700 rounded-md whitespace-nowrap px-3 h-10"
+        >
+          새 문서
+        </button>
+        <select 
+          class="bg-white text-gray-700 border border-gray-300 shadow-none h-10 appearance-none rounded-md px-3"
+        >
+          <option>A4가로 2X2</option>
+        </select>
+      </div>
+      <div class="space-x-2">
+        <div class="h-10 rounded-md border-gray-200 border p-2 inline-block">
+          <button type="button" class="inline-flex w-6 h-6 items-center justify-center">+</button>
+          <input type="text" class="w-10 text-sm text-gray-700" value="100%">
+          <button type="button" class="inline-flex w-6 h-6 items-center justify-center">-</button>
+        </div>
+        <button 
+          type="button" 
+          class="inline-flex items-center border border-blue-700 text-blue-700 rounded-md whitespace-nowrap px-3 h-10"
+        >
+          저장
+        </button>
+        <button 
+          type="button" 
+          class="inline-flex items-center border border-blue-700 text-blue-700 rounded-md whitespace-nowrap px-3 h-10"
+        >
+          인쇄
+        </button>
+        
+      </div>
+    </nav>
+    <!-- 툴바 -->
+    <div role="toolbar" class="flex items-center bg-white shadow-md h-16 px-2 flex-shrink-0 z-20 overflow-x-auto whitespace-nowrap">
+      <section class="space-x-2">
+        <label class="text-gray-700 text-sm" for="fontSelection">텍스트 설정</label>
+        <select 
+          id="fontSelection"
+          class="bg-white text-gray-700 border border-gray-300 shadow-none h-10 appearance-none rounded-md px-3 w-56 text-sm"
+        >
+          <option>토마토체 Bold</option>
+        </select>
+        <select 
+          id="fontSize"
+          class="bg-white border text-gray-700 border-gray-300 shadow-none h-10 appearance-none rounded-md px-3 text-sm"
+        >
+          <option>9pt</option>
+          <option>12pt</option>
+          <option>144pt</option>
+        </select>
+      </section>
+      <div class="py-3 pl-6 mr-6 border-r border-gray-200"></div>
+      <section class="space-x-1 h-8">
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+        </button>
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+        </button>
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+        </button>
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+        </button>
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+        </button>
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+        </button>
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+        </button>
+      </section>
+      <div class="py-3 pl-6 mr-6 border-r border-gray-200"></div>
+      <section class="space-x-1 h-8">
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+        </button>
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+        </button>
+        <button 
+          type="button" 
+          class="rounded-md w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+        >
+      </section>
+      <div class="h-full pl-4 mr-4 border-r border-gray-200"></div>
+      <section class="space-x-4 text-sm flex items-center">
+        <label class="text-gray-700 m-2">도형 설정</label>
+        <div class="flex items-center space-x-2">
+          <span class="text-gray-500">도형색</span>
+          <button 
+            type="button" 
+            class="rounded-md p-1 w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+          >
+            <div class="h-full w-full rounded bg-blue-500"></div>
+          </button>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-gray-500">테두리 색</span>
+          <button 
+            type="button" 
+            class="rounded-md p-1 w-8 h-8 inline-flex items-center justify-center border-gray-300 border"
+          >
+            <div class="h-full w-full rounded bg-red-500"></div>
+          </button>
+        </div>
+        <div class="flex items-center space-x-2">
+          <label class="text-gray-700 text-sm" for="borderWidthSelect">테두리 굵기</label>
+          <select 
+            id="borderWidthSelector"
+            class="bg-white text-gray-700 border border-gray-300 shadow-none h-10 appearance-none px-3 text-sm"
+          >
+            <option>12px</option>
+          </select>
+        </div>
+      </section>
+
+    </div>
+    <div class="flex flex-grow overflow-hidden">
+      <!-- 메뉴  -->
+      <aside class="h-full border-r border-gray-200 py-1 px-1 w-20 flex-shrink-0 z-10">
+        <a 
+          class="flex flex-col items-center justify-center w-full rounded-md h-24 cursor-pointer 
+                  bg-gradient-from-tl bg-gradient-to-br from-blue-600 to-blue-800 text-white"
+        >
+          <div class="w-6 h-6 mb-2">
+            <img src="" width="24" height="24">
+          </div>
+          <span class="text-sm text-center">탬플릿</span>
+        </a>
+
+        <a 
+          class="flex flex-col items-center justify-center w-full rounded-md h-24 cursor-pointer text-gray-400"
+        >
+          <div class="w-6 h-6 mb-2">
+            <img src="" width="24" height="24">
+          </div>
+          <span class="text-sm text-center">우리매장<br>탬플릿</span>
+        </a>
+
+        <a 
+          class="flex flex-col items-center justify-center w-full rounded-md h-24 cursor-pointer text-gray-400"
+        >
+          <div class="w-6 h-6 mb-2">
+            <img src="" width="24" height="24">
+          </div>
+          <span class="text-sm text-center">요소</span>
+        </a>
+
+        <a 
+          class="flex flex-col items-center justify-center w-full rounded-md h-24 cursor-pointer text-gray-400"
+        >
+          <div class="w-6 h-6 mb-2">
+            <img src="" width="24" height="24">
+          </div>
+          <span class="text-sm text-center">배경</span>
+        </a>
+        <a 
+          class="flex flex-col items-center justify-center w-full rounded-md h-24 cursor-pointer text-gray-400"
+        >
+          <div class="w-6 h-6 mb-2">
+            <img src="" width="24" height="24">
+          </div>
+          <span class="text-sm text-center">이미지</span>
+        </a>
+      </aside>
+      
+      <!-- 전단지 선택 -->
+      <aside class="shadow-lg h-full w-96 bg-white z-10 overflow-hidden">
+        <div class="h-full w-full overflow-x-hidden overflow-y-auto">
+          <section class="p-4">
+            <div class="w-full inline-flex items-center relative space-x-2">
+              <select 
+                id="fontSelection"
+                class="bg-white text-gray-700 border border-gray-300 shadow-none h-10 appearance-none rounded-md px-3 w-56 text-sm"
+              >
+                <option>가로 2X2</option>
+              </select>
+              <input 
+                type="text"
+                placeholder="POP명을 입력하세요"
+                class="w-full h-10 text-sm flex-grow border-gray-300 border rounded pl-2 pr-7 hover:border-gray-400"
+              />
+              <button type="button" class="inline-flex w-6 h-6 text-blue-700 absolute right-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <defs>
+                    <style>.a,.b{fill:none;}.b{stroke:currentColor ;stroke-linecap:round;stroke-width:1.5px;}</style>
+                  </defs>
+                  <rect class="a" width="24" height="24"/><g transform="translate(4 4)">
+                  <circle class="b" cx="6.558" cy="6.558" r="6.558"/>
+                  <path class="b" d="M14.423,14.423l3.54,3.54" transform="translate(-2.75 -2.75)"/>
+                </svg>
+              </button>
+            </div>
+          </section>
+  
+          <section class="flex-grow pb-4">
+            <div class="h-6 flex items-center justify-between px-4">
+              <h3 class="text-lg text-gray-700 font-medium">전체 보기</h3>
+              <a class="font-medium text-sm text-blue-600 inline-flex items-center cursor-pointer">
+                더보기
+                <svg class="ml-1" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 3L17 12L8 21" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+            <div class="grid grid-cols-3 gap-x-2 gap-y-4 p-4">
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+  
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+  
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+  
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+  
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+            </div>
+            <div class="h-8 flex items-center justify-center mt-auto flex-shrink-0">
+              <span class="text-gray-600 font-semibold">2/10</span>
+            </div>
+          </section>
+
+          <!-- 최근 사용 -->
+          <!-- <section class="mt-4 flex-grow pb-4">
+            <div class="h-6 flex items-center justify-between px-4">
+              <div class="flex items-center">
+                <svg class="mr-2 transform rotate-180 text-blue-600" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 3L17 12L8 21" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3 class="text-lg text-gray-700 font-medium">최근 사용</h3>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-x-2 gap-y-4 p-4">
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+  
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+  
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+  
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+  
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 flex-grow-0 w-28 self-start">
+                <div class="border border-gray-200 w-full h-36 rounded overflow-hidden p-1">
+                  <img src="https://source.unsplash.com/random" class="w-full h-full object-cover rounded">
+                </div>
+                <span class="text-sm overflow-hidden overflow-ellipsis whitespace-nowrap leading-tight mb-1">전단행사_A4x2</span>
+                <div class="flex items-center">
+                  <span class="text-xs text-gray-500 leading-none mr-1">세로2*1</span>
+                  <div class="rounded-2xl text-xs bg-blue-100 text-blue-600 font-bold leading-4 h-4 items-center justify-center px-1">10건</div>
+                </div>
+              </div>
+            </div>
+          </section> -->
+        </div>
+      </aside>
+
+      <!-- 디자인 영역 -->
+      <div class="flex flex-col flex-1 items-center justify-center bg-gray-100 relative">
+        <div class="rounded-md border-gray-200 border bg-white w-2/3 h-2/3">
+
+        </div>
+        <!-- 출력리스트 -->
+        <div class="js-list absolute bottom-0 w-full flex flex-col items-center overflow-hidden transform translate-y-72 transition-transform duration-200">
+          <div 
+            class="js-list-cta bg-blue-700 text-white h-8 w-12 flex-shrink-0 flex justify-center items-center rounded-tr-full rounded-tl-full cursor-pointer"
+          >
+            <svg class="w-6 h-6 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+          <div class="w-full bg-white border-t border-gray-200 h-72 flex flex-col">
+            <nav class="w-full p-4 flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="font-semibold text-gray-700 mr-4">PC 이미지 업로드</span>
+                <div class="radio-tabs inline-block border border-gray-200 rounded-md overflow-hidden py-2 px-1">
+                  <div class="tab">
+                    <input type="radio" class="sr-only" id="tab1" name="tab-group-1" checked/>
+                    <label class="px-4 py-1 text-gray-500" for="tab1">전체</label>
+                  </div>
+                  <div class="tab">
+                    <input type="radio" class="sr-only" id="tab2" name="tab-group-1"/>
+                    <label class="px-4 py-1 text-gray-500" for="tab2">배경</label>
+                  </div>
+                  <div class="tab">
+                    <input type="radio" class="sr-only" id="tab3" name="tab-group-1"/>
+                    <label class="px-4 py-1 text-gray-500" for="tab3">이미지</label>
+                  </div>
+                  <div class="tab">
+                    <input type="radio" class="sr-only" id="tab4" name="tab-group-1"/>
+                    <label class="px-4 py-1 text-gray-500" for="tab4">그림</label>
+                  </div>
+                </div>
+              </div>
+              <div class="space-x-2">
+                <button 
+                  type="button"
+                  class="bg-blue-100 font-medium text-blue-600 inline-flex px-4 h-10 items-center justify-center rounded-md">
+                  업로드
+                </button>
+                <button type="button" class="inline-flex w-6 h-6 items-center justify-center">+</button>
+                <button type="button" class="inline-flex w-6 h-6 items-center justify-center">-</button>
+              </div>
+            </nav>
+
+            <div class="relative overflow-y-auto px-3 pb-3 flex-grow">
+              <table class="w-full border-collapse border border-gray-200">
+                <tr class="bg-blue-900 text-white text-sm h-8 leading-8 sticky top-0">
+                  <th>
+                    <div class="flex items-center justify-center">
+                      <label class="text-gray-200 inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only"/>
+                        <div class="w-6 h-6 mr-1 border border-gray-200 bg-white text-blue-700 rounded-md grid place-items-center">
+                          <svg class="opacity-0" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                      </label>
+                    </div>
+                  </th>
+                  <th>파일</th>
+                  <th>파일명</th>
+                  <th>유형</th>
+                  <th>규격(사이즈)</th>
+                  <th>카테고리</th>
+                </tr>
+                <tr class="text-gray-600 text-sm h-12">
+                  <td class="text-center border border-gray-300 p-2">
+                    <label class="inline-flex items-center cursor-pointer">
+                      <input type="checkbox" class="sr-only"/>
+                      <div class="w-6 h-6 mr-1 border border-gray-300 bg-white text-blue-700 rounded-md grid place-items-center">
+                        <svg class="opacity-0" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </label>
+                  </td>
+                  <td class="p-2 bg-gray-200 border border-gray-300">
+                    <div class="flex justify-between items-center">
+                      IMG_0123.JPG
+                      <a class="bg-blue-600 px-2 py-1 text-white rounded-md">찾기</a>
+                    </div>
+                  </td>
+                  <td class="p-2 border border-gray-300">
+                    IMG_0123.JPG
+                  </td>
+                  <td class="p-2 border border-gray-300">
+                    <select class="w-full h-full appearance-none">
+                      <option>배경</option>
+                    </select>
+                  </td>
+                  <td class="p-2 border border-gray-300">
+                    <select class="w-full h-full appearance-none">
+                      <option>A4 가로 2X2</option>
+                    </select>
+                  </td>
+                  <td class="p-2 border bg-gray-200  border-gray-300"></td>
+                </tr>
+
+                <tr class="text-gray-600 text-sm h-12">
+                  <td class="text-center border border-gray-300 p-2">
+                    <label class="inline-flex items-center cursor-pointer">
+                      <input type="checkbox" class="sr-only"/>
+                      <div class="w-6 h-6 mr-1 border border-gray-300 bg-white text-blue-700 rounded-md grid place-items-center">
+                        <svg class="opacity-0" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </label>
+                  </td>
+                  <td class="p-2 bg-gray-200 border border-gray-300">
+                    <div class="flex justify-between items-center">
+                      IMG_0123.JPG
+                      <a class="bg-blue-600 px-2 py-1 text-white rounded-md">찾기</a>
+                    </div>
+                  </td>
+                  <td class="p-2 border border-gray-300">
+                    IMG_0123.JPG
+                  </td>
+                  <td class="p-2 border border-gray-300">
+                    <select class="w-full h-full appearance-none">
+                      <option>이미지</option>
+                    </select>
+                  </td>
+                  <td class="p-2 border bg-gray-200 border-gray-300">
+                  </td>
+                  <td class="p-2 border bg-gray-200 border-gray-300"></td>
+                </tr>
+
+                <tr class="text-gray-600 text-sm h-12">
+                  <td class="text-center border border-gray-300 p-2">
+                    <label class="inline-flex items-center cursor-pointer">
+                      <input type="checkbox" class="sr-only"/>
+                      <div class="w-6 h-6 mr-1 border border-gray-300 bg-white text-blue-700 rounded-md grid place-items-center">
+                        <svg class="opacity-0" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    </label>
+                  </td>
+                  <td class="p-2 bg-gray-200 border border-gray-300">
+                    <div class="flex justify-between items-center">
+                      IMG_0123.JPG
+                      <a class="bg-blue-600 px-2 py-1 text-white rounded-md">찾기</a>
+                    </div>
+                  </td>
+                  <td class="p-2 border border-gray-300">
+                    IMG_0123.JPG
+                  </td>
+                  <td class="p-2 border border-gray-300">
+                    <select class="w-full h-full appearance-none">
+                      <option>요소 -그림</option>
+                    </select>
+                  </td>
+                  <td class="p-2 border bg-gray-200 border-gray-300">
+
+                  </td>
+                  <td class="p-2 border bg-gray-200  border-gray-300"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
